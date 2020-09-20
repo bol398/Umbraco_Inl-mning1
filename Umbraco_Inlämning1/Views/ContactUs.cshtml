@@ -1,0 +1,22 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage<ContentModels.ContactUs>
+@using ContentModels = Umbraco.Web.PublishedModels;
+@{
+	Layout = "Master.cshtml";
+}
+
+<link rel="stylesheet" href="/css/ContactUs.css" />
+
+<div class="contact-us-container">
+    @if (@Model.Value<bool>("requireName")) {
+        <label for="contact-name">Full name</label>
+        <input type="text" name="contact-name"/>
+    }
+    @if (@Model.Value<bool>("requireEmail")) {
+        <label for="contact-email">Email</label>
+        <input type="text" name="contact-email"/>
+    }
+    <label for="contact-message">Message</label>
+    <textarea type="text" name="contact-message"></textarea>
+    
+    <div class="contact-send">Send</div>
+</div>

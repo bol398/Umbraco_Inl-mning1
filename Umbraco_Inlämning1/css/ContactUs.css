@@ -1,0 +1,27 @@
+.contact-us-container {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    left: calc(50% - 125px);
+}
+.contact-us-container input{
+    width: 250px;
+}
+.contact-us-container textarea{
+    resize: none;
+    width: 250px;
+    height: 150px;
+}
+.contact-us-container label{
+    margin-top: 20px;
+}
+.contact-send {
+    width:50px;
+    height:30px;
+    background-color:lightgrey;
+    text-align:center;
+    line-height: 30px;
+    user-select: none;
+    margin-left: 100px;
+    margin-top: 20px;
+}

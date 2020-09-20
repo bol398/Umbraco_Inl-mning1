@@ -1,0 +1,28 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage<ContentModels.Products>
+@using ContentModels = Umbraco.Web.PublishedModels;
+@{
+	Layout = "Master.cshtml";
+}
+
+@{
+	var selection = Umbraco.Content(Guid.Parse("afb951f1-608b-4c6b-81d0-19ed44d53685"))
+    .ChildrenOfType("product")
+    .Where(x => x.IsVisible());
+}
+
+<link rel="stylesheet" href="/css/Products.css" />
+<div class="products-container">
+    @foreach(var item in selection)
+    {
+        var image = item.Value<IPublishedContent>("image");
+    
+        var backgroundImage = "background-image: url('" + @image.Url + "')";
+        
+        <div class="product-container">
+            <div class="product-image" style="@backgroundImage"></div>
+            <p class="product-name">@item.Value("productName")</p>
+            <p class="product-description">@item.Value("description")</p>
+            <p class="product-price">@item.Value("price") kr</p>
+        </div>
+    }
+</div>

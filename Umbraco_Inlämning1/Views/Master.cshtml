@@ -1,0 +1,47 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage
+@{
+	Layout = null;
+}
+
+<head>
+    <link rel="stylesheet" href="/css/home.css" />
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.0.0.min.js"></script>
+</head>
+@* the fun starts here *@
+
+<header>
+    <div class="nav-button"></div>
+</header>
+
+<div class="side-nav">
+    @{
+    	var selection = Umbraco.Content(Guid.Parse("600106a4-e889-4421-890f-05dfcecbe9ec"))
+        .Children()
+        .Where(x => x.IsVisible());
+    }
+    <ul class="nav-list">
+        
+        <li class="nav-link">
+			<a href="/">Home</a>
+		</li>
+        
+    	@foreach (var item in selection)
+    	{
+    		<li class="nav-link">
+    			<a href="@item.Url">@item.Name</a>
+    		</li>
+    	}
+    </ul>
+</div>
+
+@RenderBody()
+
+<footer>
+    
+</footer>
+
+<script>
+    $(".nav-button").on("click", function () {
+        $(".side-nav").animate({width:'toggle'},350);
+    });
+</script>
